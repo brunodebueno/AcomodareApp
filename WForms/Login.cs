@@ -8,12 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
 
 namespace WForms {
     public partial class Login : Form {
         public Login() {
             InitializeComponent();
         }
+
+        UsuarioBLL usuario = new UsuarioBLL();
 
         private void Login_Load(object sender, EventArgs e) {
             background.Size = this.Size;
@@ -27,10 +30,19 @@ namespace WForms {
         }
 
         private void btnLogin_Click(object sender, EventArgs e) {
+            try {
+                if(usuario.ProcurarPorLogin(txtUsuario.Text, txtSenha.Text)) {
+                    ((MDIPrincipal)this.MdiParent).EfetuouLogin();
+                    this.Dispose();
+                }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            /*
             if(txtUsuario.Text == "admin" && txtSenha.Text == "admin") {
                 ((MDIPrincipal)this.MdiParent).EfetuouLogin();
                 this.Dispose();
-            }               
+            }*/
         }
 
         private void txtUsuario_KeyUp(object sender, KeyEventArgs e) {

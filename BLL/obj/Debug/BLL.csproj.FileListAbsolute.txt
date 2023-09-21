@@ -1,0 +1,10 @@
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\BLL\bin\Debug\BLL.dll
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\BLL\bin\Debug\BLL.pdb
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\BLL\bin\Debug\DAL.dll
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\BLL\bin\Debug\DAL.pdb
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\BLL\bin\Debug\DAL.dll.config
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\BLL\obj\Debug\BLL.dll
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\BLL\obj\Debug\BLL.pdb
