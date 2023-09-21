@@ -1,0 +1,7 @@
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\DAL\bin\Debug\DAL.dll.config
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\DAL\bin\Debug\DAL.dll
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\DAL\bin\Debug\DAL.pdb
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\DAL\obj\Debug\DAL.dll
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\DAL\obj\Debug\DAL.pdb
