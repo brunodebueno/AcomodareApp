@@ -1,0 +1,13 @@
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\obj\Debug\WForms.csproj.AssemblyReference.cache
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\obj\Debug\WForms.Properties.Resources.resources
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\obj\Debug\WForms.csproj.GenerateResource.cache
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\obj\Debug\WForms.csproj.CoreCompileInputs.cache
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\obj\Debug\WForms.Forms.ControlesCustom.BotaoNavLateral.resources
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\obj\Debug\WForms.MDIPrincipal.resources
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\obj\Debug\WForms.Login.resources
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\bin\Debug\WForms.exe.config
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\bin\Debug\WForms.exe
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\bin\Debug\WForms.pdb
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\obj\Debug\WForms.Pets.resources
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\obj\Debug\WForms.exe
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\AcomodareApp\obj\Debug\WForms.pdb
