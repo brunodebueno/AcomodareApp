@@ -220,6 +220,7 @@
             this.btnAnimais.Size = new System.Drawing.Size(65, 55);
             this.btnAnimais.TabIndex = 7;
             this.btnAnimais.Texto = "Animais";
+            this.btnAnimais.Load += new System.EventHandler(this.btnAnimais_Load);
             this.btnAnimais.Click += new System.EventHandler(this.btnAnimais_Click);
             // 
             // timerPrincipal

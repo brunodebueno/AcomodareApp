@@ -22,16 +22,5 @@ namespace WForms.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=acomodare-dev.database.windows.net;Persist Security Info=True;User ID" +
-            "=administrador;Password=acomodare157@")]
-        public string SqlConnection {
-            get {
-                return ((string)(this["SqlConnection"]));
-            }
-        }
     }
 }

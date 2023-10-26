@@ -49,7 +49,7 @@ namespace WForms {
         #region Funções Locais
         public void EfetuouLogin() {
             pnlLateral.Show();
-            MaximizarForm();
+            //MaximizarForm();
         }
 
         private void DoubleClickRedimensionar() {
@@ -131,15 +131,23 @@ namespace WForms {
 
         private void btnAnimais_Click(object sender, EventArgs e)
         {
+            if(pets.IsDisposed)
+                pets = new Pets();
             pets.MdiParent = this;
             pets.Show();
             pets.Location = new Point(0, 0);
             this.SetBevel(false);
+
+            this.ActiveMdiChild.Dock = DockStyle.Fill;
         }
 
         private void MDIPrincipal_Resize(object sender, EventArgs e)
         {
             if(this.ActiveMdiChild != null) this.ActiveMdiChild.Dock = DockStyle.Fill;
+        }
+
+        private void btnAnimais_Load(object sender, EventArgs e) {
+
         }
     }
 

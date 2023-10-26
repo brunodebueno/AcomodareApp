@@ -36,13 +36,8 @@ namespace WForms {
                     this.Dispose();
                 }
             } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Erro ao efetuar login. Erro:" + ex.Message,"Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            /*
-            if(txtUsuario.Text == "admin" && txtSenha.Text == "admin") {
-                ((MDIPrincipal)this.MdiParent).EfetuouLogin();
-                this.Dispose();
-            }*/
         }
 
         private void txtUsuario_KeyUp(object sender, KeyEventArgs e) {
