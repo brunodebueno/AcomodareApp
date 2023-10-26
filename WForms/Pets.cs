@@ -22,6 +22,11 @@ namespace WForms
 
         private void Pets_Load(object sender, EventArgs e) {
             AtualizarGrid();
+
+            //Oculta as tabs para o usuario
+            tabControl.Appearance = TabAppearance.FlatButtons;
+            tabControl.ItemSize = new Size(0, 1);
+            tabControl.SizeMode = TabSizeMode.Fixed;
         }
 
         private void AtualizarGrid() {
@@ -45,7 +50,7 @@ namespace WForms
             }
         }
 
-        private void EditarGrid() {
+        private void Editar() {
             try {
                 editando = true;
                 tabControl.SelectTab(1); //Tab de Formulario
@@ -70,6 +75,25 @@ namespace WForms
                 }              
             } catch (Exception ex) {
                 MessageBox.Show("Erro ao carregar registro. Erro:" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Excluir() {
+            try {
+                int id = int.Parse(dataGridPet.CurrentRow.Cells[0].Value.ToString());
+                if (id == 0) {                    
+                    MessageBox.Show("Selecione um registro para efetuar a exclusão", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                PetsBLL pets = new PetsBLL();
+                pets.Delete(id);
+
+                AtualizarGrid();
+
+                MessageBox.Show("Registro excluido com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } catch (Exception ex) {
+                MessageBox.Show("Erro ao excluir registro. Erro:" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -106,7 +130,7 @@ namespace WForms
         }
 
         private void btnEditar_Click(object sender, EventArgs e) {
-            EditarGrid();
+            Editar();
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e) {
@@ -122,10 +146,14 @@ namespace WForms
             this.Dispose();
         }
         private void dataGridPet_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            EditarGrid();
+            Editar();
         }
         private void btnPesquisar_Click(object sender, EventArgs e) {
             AtualizarGrid();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e) {
+            Excluir();
         }
     }
 }

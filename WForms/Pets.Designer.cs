@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblNomeForm = new System.Windows.Forms.Label();
@@ -140,7 +139,6 @@
             this.tabListagem.Size = new System.Drawing.Size(630, 349);
             this.tabListagem.TabIndex = 0;
             this.tabListagem.Text = "Listagem";
-            this.tabListagem.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -187,6 +185,7 @@
             this.btnExcluir.TabIndex = 4;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnEditar
             // 
@@ -215,14 +214,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridPet.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridPet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridPet.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridPet.Location = new System.Drawing.Point(3, 29);
             this.dataGridPet.MultiSelect = false;
             this.dataGridPet.Name = "dataGridPet";
@@ -259,7 +250,6 @@
             this.tabFormulario.Size = new System.Drawing.Size(630, 349);
             this.tabFormulario.TabIndex = 1;
             this.tabFormulario.Text = "Formulario";
-            this.tabFormulario.UseVisualStyleBackColor = true;
             // 
             // btnVoltar
             // 
