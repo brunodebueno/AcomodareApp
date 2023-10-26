@@ -22,6 +22,7 @@ namespace WForms {
         Login login;
         Pets pets;
         Pessoas pessoas;
+        Produtos produtos;
 
         private bool exibiuLogin = false;
 
@@ -41,6 +42,7 @@ namespace WForms {
 
             btnAnimais.Clicked += new EventHandler(btnAnimais_Click);
             btnPessoas.Clicked += new EventHandler(btnPessoas_Click);
+            btnProdutos.Clicked += new EventHandler(btnProdutos_Click);
 
         }
 
@@ -65,6 +67,11 @@ namespace WForms {
         public void FechouPessoas() {
             btnPessoas.Selecionado = false;
             btnPessoas.LostFocus();
+        }
+
+        public void FechouProdutos() {
+            btnProdutos.Selecionado = false;
+            btnProdutos.LostFocus();
         }
 
         private void DoubleClickRedimensionar() {
@@ -183,6 +190,25 @@ namespace WForms {
             pessoas.MdiParent = this;
             pessoas.Show();
             pessoas.Location = new Point(0, 0);
+            this.SetBevel(false);
+
+            this.ActiveMdiChild.Dock = DockStyle.Fill;
+        }
+
+        private void btnProdutos_Click(object sender, EventArgs e) {
+            if (produtos == null || produtos.IsDisposed)
+                produtos = new Produtos();
+            btnProdutos.Selecionado = false; // Altera pra voltar a ser selecionado
+            if (this.ActiveMdiChild != produtos) {
+                this.ActivateMdiChild(produtos);
+                if (this.ActiveMdiChild != null)
+                    this.ActiveMdiChild.BringToFront();
+            }
+
+
+            produtos.MdiParent = this;
+            produtos.Show();
+            produtos.Location = new Point(0, 0);
             this.SetBevel(false);
 
             this.ActiveMdiChild.Dock = DockStyle.Fill;

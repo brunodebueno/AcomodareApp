@@ -31,3 +31,4 @@ C:\Dev\Fatec\AcomodareApp\AcomodareApp\WForms\obj\Debug\WForms.csproj.CopyComple
 C:\Dev\Fatec\AcomodareApp\AcomodareApp\WForms\obj\Debug\WForms.exe
 C:\Dev\Fatec\AcomodareApp\AcomodareApp\WForms\obj\Debug\WForms.pdb
 C:\Dev\Fatec\AcomodareApp\AcomodareApp\WForms\obj\Debug\WForms.Pessoas.resources
+C:\Dev\Fatec\AcomodareApp\AcomodareApp\WForms\obj\Debug\WForms.Produtos.resources

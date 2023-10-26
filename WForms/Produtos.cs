@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace WForms
 {
-    public partial class Pessoas : Form
+    public partial class Produtos : Form
     {
         private bool editando = false;
-        public Pessoas()
+        public Produtos()
         {
             InitializeComponent();
         }
@@ -31,11 +31,11 @@ namespace WForms
 
         private void AtualizarGrid() {
             try {
-                PessoasBLL pessoa = new PessoasBLL();
+                ProdutosBLL produto = new ProdutosBLL();
                 if(String.IsNullOrEmpty(txtPesquisa.Text))
-                    dataGrid.DataSource = pessoa.Select();                
+                    dataGrid.DataSource = produto.Select();                
                 else
-                    dataGrid.DataSource = pessoa.Select(txtPesquisa.Text);
+                    dataGrid.DataSource = produto.Select(txtPesquisa.Text);
 
             } catch (Exception ex) {
                 MessageBox.Show("Erro ao carregar listagem. Erro:" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -59,21 +59,16 @@ namespace WForms
                 if (id == 0)
                     return;
 
-                PessoasBLL pessoa = new PessoasBLL();
+                ProdutosBLL pessoa = new ProdutosBLL();
                 DbDataReader dr = pessoa.Select(id);
                 if (dr.HasRows) {
                     while (dr.Read()) {
                         txtCodigo.Text = dr["Id"].ToString();
-                        txtNome.Text = dr["Nome"].ToString();
-                        txtCPF.Text = dr["cpf"].ToString();
-                        txtGenero.Text = dr["genero"].ToString();
-                        dtpNascimento.Text = dr["dataNascimento"].ToString();
-                        txtEndereco.Text = dr["endereco"].ToString();
-                        mskTelefone.Text = dr["telefone"].ToString();
-                        txtBairro.Text = dr["bairro"].ToString();
-                        txtCidade.Text = dr["cidade"].ToString();
-                        mskCEP.Text = dr["cep"].ToString();
-                        txtUF.Text = dr["uf"].ToString();
+                        txtDescricao.Text = dr["Descricao"].ToString();
+                        txtTipoUn.Text = dr["TipoUn"].ToString();
+                        txtCodigoEAN.Text = dr["CodigoEAN"].ToString();
+                        txtPreco.Text = dr["preco"].ToString();
+                        txtQuantidade.Text = dr["quantidade"].ToString();
                     }
                 }             
             } catch (Exception ex) {
@@ -89,7 +84,7 @@ namespace WForms
                     return;
                 }
 
-                PessoasBLL pessoa = new PessoasBLL();
+                ProdutosBLL pessoa = new ProdutosBLL();
                 pessoa.Delete(id);
 
                 AtualizarGrid();
@@ -102,13 +97,11 @@ namespace WForms
 
         private void btnSalvar_Click(object sender, EventArgs e) {
             try {
-                PessoasBLL pessoa = new PessoasBLL();
+                ProdutosBLL produto = new ProdutosBLL();
                 if (editando)
-                    pessoa.Update(int.Parse(txtCodigo.Text), txtNome.Text, txtCPF.Text, txtGenero.Text, dtpNascimento.Value.Date,
-                        txtEndereco.Text, mskTelefone.Text, txtBairro.Text, txtCidade.Text, mskCEP.Text, txtUF.Text);
+                    produto.Update(int.Parse(txtCodigo.Text), txtDescricao.Text, txtTipoUn.Text, txtCodigoEAN.Text, txtPreco.Text, txtQuantidade.Text);
                 else
-                    pessoa.Insert(txtNome.Text, txtCPF.Text, txtGenero.Text, dtpNascimento.Value.Date,
-                    txtEndereco.Text, mskTelefone.Text, txtBairro.Text, txtCidade.Text, mskCEP.Text, txtUF.Text);
+                    produto.Insert(txtDescricao.Text,txtTipoUn.Text,txtCodigoEAN.Text,txtPreco.Text,txtQuantidade.Text);
 
                 MessageBox.Show("Salvo com sucesso", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -146,7 +139,7 @@ namespace WForms
         }
 
         private void btnFechar_Click(object sender, EventArgs e) {
-            ((MDIPrincipal)this.MdiParent).FechouPessoas();
+            ((MDIPrincipal)this.MdiParent).FechouProdutos();
             this.Dispose();
         }
         private void dataGridPet_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
@@ -161,6 +154,20 @@ namespace WForms
         }
 
         private void label6_Click(object sender, EventArgs e) {
+
+        }
+
+        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e) {
+            if(!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',')
+                e.Handled = true;
+        }
+
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e) {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',')
+                e.Handled = true;
+        }
+
+        private void txtQuantidade_TextChanged(object sender, EventArgs e) {
 
         }
     }
