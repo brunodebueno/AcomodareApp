@@ -18,9 +18,9 @@ namespace WForms.Forms.ControlesCustom {
         private readonly Color corTextoSelecao = Color.FromArgb(1, 111, 214);
         private readonly Color corTextoNormal = Color.FromArgb(97, 97, 97);
 
+        public event EventHandler Clicked;
 
         private bool foco = false;
-
 
         private bool selecionado = false;
         private string texto;
@@ -70,18 +70,21 @@ namespace WForms.Forms.ControlesCustom {
             pnlNavegacao.Hide();
             // Todos Controles terem o mesmo tratamento
 
-            this.Click += new EventHandler(CustomButtonClick);
+            //this.Click += new EventHandler(CustomButtonClick);
             this.MouseEnter += new EventHandler(CustomMouseEnter);
             this.MouseLeave += new EventHandler(CustomMouseLeave);
 
             foreach (Control c in this.Controls) {
-                c.Click += new EventHandler(CustomButtonClick);
+                //c.Click += new EventHandler(CustomButtonClick);
                 c.MouseEnter += new EventHandler(CustomMouseEnter);
                 c.MouseLeave += new EventHandler(CustomMouseLeave);
             }
         }
 
         private void CustomButtonClick(object sender, EventArgs e) {
+            if(Clicked != null)
+                Clicked(this, e);
+            
             if (Selecionado) {
                 Selecionado = false;
                 Console.WriteLine("Selecionado: false");
@@ -119,6 +122,10 @@ namespace WForms.Forms.ControlesCustom {
 
         private void CustomMouseLeave(object sender, EventArgs e)
         {
+            LostFocus();
+        }
+
+        public void LostFocus() {
             foco = false;
             if (Selecionado) {
                 pnlNavegacao.Show();
@@ -127,8 +134,7 @@ namespace WForms.Forms.ControlesCustom {
                 // img Selecao
                 imgIcone.Image = iconeSelecionado;
                 lblTexto.ForeColor = corTextoSelecao;
-            }
-            else {
+            } else {
                 pnlNavegacao.Hide();
                 this.BackColor = corOriginalBotao;
                 // img normal

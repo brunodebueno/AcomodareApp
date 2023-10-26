@@ -20,7 +20,9 @@ namespace WForms {
         private Point initialClickedPoint;
 
         Login login;
-        Pets pets = new Pets();
+        Pets pets;
+        Pessoas pessoas;
+
         private bool exibiuLogin = false;
 
         public MDIPrincipal() {
@@ -37,6 +39,9 @@ namespace WForms {
 
             this.SetBevel(false);
 
+            btnAnimais.Clicked += new EventHandler(btnAnimais_Click);
+            btnPessoas.Clicked += new EventHandler(btnPessoas_Click);
+
         }
 
         private void MDIPrincipal_SizeChanged(object sender, EventArgs e) {
@@ -50,6 +55,16 @@ namespace WForms {
         public void EfetuouLogin() {
             pnlLateral.Show();
             //MaximizarForm();
+        }
+
+        public void FechouPets() {
+            btnAnimais.Selecionado = false;
+            btnAnimais.LostFocus();
+        }
+
+        public void FechouPessoas() {
+            btnPessoas.Selecionado = false;
+            btnPessoas.LostFocus();
         }
 
         private void DoubleClickRedimensionar() {
@@ -128,11 +143,18 @@ namespace WForms {
         {
             //lblHoras.Text = DateTime.Now.ToString("HH:mm");            
         }
-
+        
         private void btnAnimais_Click(object sender, EventArgs e)
         {
-            if(pets.IsDisposed)
+            if(pets == null || pets.IsDisposed)
                 pets = new Pets();
+            btnAnimais.Selecionado = false; // Altera pra voltar a ser selecionado
+            if (this.ActiveMdiChild != pets) {                 
+                this.ActivateMdiChild(pets);
+                if(this.ActiveMdiChild != null)
+                    this.ActiveMdiChild.BringToFront();
+            }
+
             pets.MdiParent = this;
             pets.Show();
             pets.Location = new Point(0, 0);
@@ -146,8 +168,24 @@ namespace WForms {
             if(this.ActiveMdiChild != null) this.ActiveMdiChild.Dock = DockStyle.Fill;
         }
 
-        private void btnAnimais_Load(object sender, EventArgs e) {
 
+        private void btnPessoas_Click(object sender, EventArgs e) {
+            if (pessoas == null || pessoas.IsDisposed)
+                pessoas = new Pessoas();
+            btnPessoas.Selecionado = false; // Altera pra voltar a ser selecionado
+            if (this.ActiveMdiChild != pessoas) {                 
+                this.ActivateMdiChild(pessoas);
+                if (this.ActiveMdiChild != null)
+                    this.ActiveMdiChild.BringToFront();
+            }
+                
+
+            pessoas.MdiParent = this;
+            pessoas.Show();
+            pessoas.Location = new Point(0, 0);
+            this.SetBevel(false);
+
+            this.ActiveMdiChild.Dock = DockStyle.Fill;
         }
     }
 

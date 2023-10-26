@@ -37,6 +37,7 @@
             this.pnlNavegacao.Name = "pnlNavegacao";
             this.pnlNavegacao.Size = new System.Drawing.Size(2, 51);
             this.pnlNavegacao.TabIndex = 6;
+            this.pnlNavegacao.Click += new System.EventHandler(this.CustomButtonClick);
             // 
             // imgIcone
             // 
@@ -45,6 +46,7 @@
             this.imgIcone.Size = new System.Drawing.Size(24, 24);
             this.imgIcone.TabIndex = 7;
             this.imgIcone.TabStop = false;
+            this.imgIcone.Click += new System.EventHandler(this.CustomButtonClick);
             // 
             // lblTexto
             // 
@@ -57,6 +59,7 @@
             this.lblTexto.Size = new System.Drawing.Size(62, 16);
             this.lblTexto.TabIndex = 8;
             this.lblTexto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTexto.Click += new System.EventHandler(this.CustomButtonClick);
             // 
             // BotaoNavLateral
             // 
@@ -69,6 +72,7 @@
             this.Name = "BotaoNavLateral";
             this.Size = new System.Drawing.Size(65, 55);
             this.Load += new System.EventHandler(this.BotaoNavLateral_Load);
+            this.Click += new System.EventHandler(this.CustomButtonClick);
             ((System.ComponentModel.ISupportInitialize)(this.imgIcone)).EndInit();
             this.ResumeLayout(false);
 

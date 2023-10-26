@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace WForms
 {
-    public partial class Pets : Form
+    public partial class Pessoas : Form
     {
         private bool editando = false;
-        public Pets()
+        public Pessoas()
         {
             InitializeComponent();
         }
@@ -31,11 +31,11 @@ namespace WForms
 
         private void AtualizarGrid() {
             try {
-                PetsBLL pets = new PetsBLL();
+                PessoasBLL pessoa = new PessoasBLL();
                 if(String.IsNullOrEmpty(txtPesquisa.Text))
-                    dataGridPet.DataSource = pets.Select();                
+                    dataGridPet.DataSource = pessoa.Select();                
                 else
-                    dataGridPet.DataSource = pets.Select(txtPesquisa.Text);
+                    dataGridPet.DataSource = pessoa.Select(txtPesquisa.Text);
 
             } catch (Exception ex) {
                 MessageBox.Show("Erro ao carregar listagem. Erro:" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -44,7 +44,7 @@ namespace WForms
 
         private void LimparFormulario() {
             foreach (Control c in tabFormulario.Controls) {
-                if(c is TextBox) {
+                if(c is TextBox || c is MaskedTextBox || c is DateTimePicker) {
                     c.Text = "";
                 }
             }
@@ -59,20 +59,23 @@ namespace WForms
                 if (id == 0)
                     return;
 
-                PetsBLL pets = new PetsBLL();
-                DbDataReader dr = pets.Select(id);
+                PessoasBLL pessoa = new PessoasBLL();
+                DbDataReader dr = pessoa.Select(id);
                 if (dr.HasRows) {
                     while (dr.Read()) {
                         txtCodigo.Text = dr["Id"].ToString();
                         txtNome.Text = dr["Nome"].ToString();
-                        txtProprietario.Text = dr["Proprietario"].ToString();
-                        txtRaca.Text = dr["Raca"].ToString();
-                        txtCor.Text = dr["Cor"].ToString();
-                        txtPelagem.Text = dr["Pelagem"].ToString();
-                        txtTamanho.Text = dr["Tamanho"].ToString();
-                        txtObservacoes.Text = dr["Observacoes"].ToString();
+                        txtCPF.Text = dr["cpf"].ToString();
+                        txtGenero.Text = dr["genero"].ToString();
+                        dtpNascimento.Text = dr["dataNascimento"].ToString();
+                        txtEndereco.Text = dr["endereco"].ToString();
+                        mskTelefone.Text = dr["telefone"].ToString();
+                        txtBairro.Text = dr["bairro"].ToString();
+                        txtCidade.Text = dr["cidade"].ToString();
+                        mskCEP.Text = dr["cep"].ToString();
+                        txtUF.Text = dr["uf"].ToString();
                     }
-                }              
+                }             
             } catch (Exception ex) {
                 MessageBox.Show("Erro ao carregar registro. Erro:" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -86,8 +89,8 @@ namespace WForms
                     return;
                 }
 
-                PetsBLL pets = new PetsBLL();
-                pets.Delete(id);
+                PessoasBLL pessoa = new PessoasBLL();
+                pessoa.Delete(id);
 
                 AtualizarGrid();
 
@@ -99,13 +102,13 @@ namespace WForms
 
         private void btnSalvar_Click(object sender, EventArgs e) {
             try {
-                PetsBLL pets = new PetsBLL();
+                PessoasBLL pessoa = new PessoasBLL();
                 if (editando)
-                    pets.Update(int.Parse(txtCodigo.Text), txtNome.Text, txtRaca.Text, txtProprietario.Text, txtCor.Text,
-                    txtPelagem.Text, txtTamanho.Text, txtObservacoes.Text);
+                    pessoa.Update(int.Parse(txtCodigo.Text), txtNome.Text, txtCPF.Text, txtGenero.Text, dtpNascimento.Value.Date,
+                        txtEndereco.Text, mskTelefone.Text, txtBairro.Text, txtCidade.Text, mskCEP.Text, txtUF.Text);
                 else
-                    pets.Insert(txtNome.Text, txtRaca.Text, txtProprietario.Text, txtCor.Text,
-                    txtPelagem.Text, txtTamanho.Text, txtObservacoes.Text);
+                    pessoa.Insert(txtNome.Text, txtCPF.Text, txtGenero.Text, dtpNascimento.Value.Date,
+                    txtEndereco.Text, mskTelefone.Text, txtBairro.Text, txtCidade.Text, mskCEP.Text, txtUF.Text);
 
                 MessageBox.Show("Salvo com sucesso", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -143,7 +146,7 @@ namespace WForms
         }
 
         private void btnFechar_Click(object sender, EventArgs e) {
-            ((MDIPrincipal)this.MdiParent).FechouPets();
+            ((MDIPrincipal)this.MdiParent).FechouPessoas();
             this.Dispose();
         }
         private void dataGridPet_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
@@ -155,6 +158,10 @@ namespace WForms
 
         private void btnExcluir_Click(object sender, EventArgs e) {
             Excluir();
+        }
+
+        private void label6_Click(object sender, EventArgs e) {
+
         }
     }
 }
