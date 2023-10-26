@@ -34,6 +34,8 @@ namespace WForms {
                 if(usuario.ProcurarPorLogin(txtUsuario.Text, txtSenha.Text)) {
                     ((MDIPrincipal)this.MdiParent).EfetuouLogin();
                     this.Dispose();
+                } else {
+                    MessageBox.Show("Login não localizado.\nVerifique o usuário e senha digitados.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             } catch (Exception ex) {
                 MessageBox.Show("Erro ao efetuar login. Erro:" + ex.Message,"Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);

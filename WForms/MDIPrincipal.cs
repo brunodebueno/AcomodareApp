@@ -23,6 +23,7 @@ namespace WForms {
         Pets pets;
         Pessoas pessoas;
         Produtos produtos;
+        Configuracoes configuracoes;
 
         private bool exibiuLogin = false;
 
@@ -43,6 +44,7 @@ namespace WForms {
             btnAnimais.Clicked += new EventHandler(btnAnimais_Click);
             btnPessoas.Clicked += new EventHandler(btnPessoas_Click);
             btnProdutos.Clicked += new EventHandler(btnProdutos_Click);
+            btnDefinicoes.Clicked += new EventHandler(btnDefinicoes_Click);
 
         }
 
@@ -72,6 +74,10 @@ namespace WForms {
         public void FechouProdutos() {
             btnProdutos.Selecionado = false;
             btnProdutos.LostFocus();
+        }
+        public void FechouConfiguracoes() {
+            btnDefinicoes.Selecionado = false;
+            btnDefinicoes.LostFocus();
         }
 
         private void DoubleClickRedimensionar() {
@@ -213,6 +219,25 @@ namespace WForms {
 
             this.ActiveMdiChild.Dock = DockStyle.Fill;
         }
+
+        private void btnDefinicoes_Click(object sender, EventArgs e) {
+            if (configuracoes == null || configuracoes.IsDisposed)
+                configuracoes = new Configuracoes();
+            btnDefinicoes.Selecionado = false; // Altera pra voltar a ser selecionado
+            if (this.ActiveMdiChild != configuracoes) {
+                this.ActivateMdiChild(configuracoes);
+                if (this.ActiveMdiChild != null)
+                    this.ActiveMdiChild.BringToFront();
+            }
+
+
+            configuracoes.MdiParent = this;
+            configuracoes.Show();
+            configuracoes.Location = new Point(0, 0);
+            this.SetBevel(false);
+
+            this.ActiveMdiChild.Dock = DockStyle.Fill;
+        }        
     }
 
     public static class MDIClientSupport {
